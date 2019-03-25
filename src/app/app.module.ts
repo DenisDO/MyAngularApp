@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { LoginModule } from './pages/login-page/login.page.module';
 import { HomeModule } from './pages/home-page/home.page.module';
 import { PageNotFoundModule } from './pages/page-not-found/page-not-found.page.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PageNotFoundModule } from './pages/page-not-found/page-not-found.page.m
     CoreModule,
     LoginModule,
     HomeModule,
-    PageNotFoundModule
+    PageNotFoundModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
