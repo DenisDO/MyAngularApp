@@ -3,22 +3,22 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './pages/login-page/login.page.component';
 import { CoreModule } from './core/core.module';
-import { HomeComponent } from './pages/home-page/home.page.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.page.component';
+import { LoginModule } from './pages/login-page/login.page.module';
+import { HomeModule } from './pages/home-page/home.page.module';
+import { PageNotFoundModule } from './pages/page-not-found/page-not-found.page.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    HomeComponent,
-    PageNotFoundComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    LoginModule,
+    HomeModule,
+    PageNotFoundModule
   ],
   providers: [],
   bootstrap: [AppComponent]
