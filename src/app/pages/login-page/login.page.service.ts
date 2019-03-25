@@ -1,9 +1,4 @@
-import { Injectable } from '@angular/core';
-// import { HttpClient } from 'selenium-webdriver/http';
+import { Injectable, OnInit } from '@angular/core';
 
 @Injectable()
-export class LoginPageService {
-    // constructor(private http: HttpClient) {
-
-    // }
-}
+export class LoginPageService {}
