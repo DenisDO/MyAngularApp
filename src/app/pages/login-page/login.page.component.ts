@@ -22,11 +22,10 @@ export class LoginComponent {
         if (this.randomize()) {
             this.loginPageService.logIn(email, password).subscribe(data => {
                 localStorage.setItem('token', JSON.stringify(data));
+                this.router.navigate(['/home']);
             });
         } else {
             localStorage.removeItem('token');
         }
-
-        this.router.navigate(['/home']);
     }
 }
