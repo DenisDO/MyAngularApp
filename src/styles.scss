@@ -11,4 +11,15 @@ body {
     align-items: center;
     background-color: #f0f0f0;
     font-family: Arial, Helvetica, sans-serif;
+    
+    app-root {
+        width: 100%;
+
+        app-home-page, app-log-in {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }
