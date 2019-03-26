@@ -12,7 +12,6 @@ button {
     background: linear-gradient(45deg, #1c34af 1%,#5665af 100%);
     height: 40px;
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     border: none;
     box-sizing: border-box;
@@ -20,8 +19,13 @@ button {
     transition: 200ms;
     outline: none;
 
-    &:hover {
+    &:hover:enabled {
         box-shadow: 0px 0px 6px 1px gray;
         cursor: pointer;
+    }
+
+    &[disabled] {
+        background: linear-gradient(45deg, #5464b1 1%,#858db6 100%);
+        cursor: default;
     }
 }

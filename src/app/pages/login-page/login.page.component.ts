@@ -1,14 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { LoginPageService } from './login.page.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-log-in',
     templateUrl: './login.page.component.html',
     styleUrls: ['./login.page.component.scss']
 })
-export class LoginComponent implements OnInit {
-    users: any = [1, 2, 3];
+export class LoginComponent {
+    email: '';
+    password: '';
 
-    constructor() {}
+    constructor(private loginPageService: LoginPageService,
+                private router: Router) { }
 
-    ngOnInit() {}
+    private randomize() {
+        return Math.random() >= 0.5;
+    }
+
+    signIn(email: string, password: string) {
+        if (this.randomize()) {
+            this.loginPageService.logIn(email, password).subscribe(data => {
+                localStorage.setItem('token', JSON.stringify(data));
+            });
+        } else {
+            localStorage.removeItem('token');
+        }
+
+        this.router.navigate(['/home']);
+    }
 }

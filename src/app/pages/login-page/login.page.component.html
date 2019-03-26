@@ -1,10 +1,11 @@
 <div class="login-container">
     <mat-form-field>
-        <input type="email" matInput placeholder="E-mail" autocomplete="off" />
-    </mat-form-field>
-    <mat-form-field>
-        <input type="password" matInput placeholder="Password" />
+        <input [(ngModel)]="email" type="email" matInput placeholder="E-mail" autocomplete="off" required />
     </mat-form-field>
 
-    <button>Sign In</button>
+    <mat-form-field>
+        <input [(ngModel)]="password" type="password" matInput placeholder="Password" required />
+    </mat-form-field>
+
+    <button (click)="signIn(email, password)" [disabled]="!email || !password">Sign In</button>
 </div>

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login-page/login.page.component';
 import { HomeComponent } from './pages/home-page/home.page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.page.component';
+import { IsUserGuard } from './core/guards/is-user.guard';
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [IsUserGuard]
   },
   {
     path: '',
