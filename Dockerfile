@@ -1,11 +1,25 @@
-FROM tiangolo/node-frontend:10 as build-stage
-WORKDIR /app
-COPY package*.json /app/
-RUN npm install
-COPY ./ /app/
-ARG configuration=production
-RUN npm run build -- --output-path=./dist/out --configuration $configuration
+FROM nginx
 
-FROM nginx:1.15
-COPY --from=build-stage /app/dist/out/ /usr/share/nginx/html
-COPY --from=build-stage /nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 90
+
+WORKDIR /usr/application
+
+COPY . .
+COPY /users_app.com.conf /etc/nginx/conf.d/default.conf
+
+RUN apt-get update \
+    && apt-get install -y \
+    build-essential libpng-dev \
+    curl \
+    cowsay \
+    && curl -sL https://deb.nodesource.com/setup_11.x | bash - \
+    && apt-get install -y nodejs \
+    && ln -s /usr/games/cowsay /usr/bin/cowsay
+
+RUN npm install \
+    && npm install cross-env
+
+RUN npm run build -- --output-path=./build
+
+CMD cowsay "Everything is ready, my Lord!" \
+    && nginx -g "daemon off;"
